@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
-import numpy as np, math, cmath, time
+import cmath
+import math
+import time
 
-inicio = time.time()
+import numpy as np
 
 
 def fasor(R, theta):
@@ -261,57 +263,58 @@ b0 = 1
 b1 = 0
 b2 = 0
 
+if __name__ == "__main__":
+    inicio = time.time()
 
-[Vbus, Sbr, P_loss, Q_loss, iter, error] = sum_power(Vbus_old, TOL, max_iter, barras_sc, linhas)
-VSLI_sgd = voltage_stability_load_index(Vbus, Sbr, barras_sc, linhas)
+    [Vbus, Sbr, P_loss, Q_loss, iter, error] = sum_power(Vbus_old, TOL, max_iter, barras_sc, linhas)
+    VSLI_sgd = voltage_stability_load_index(Vbus, Sbr, barras_sc, linhas)
 
-# Saída
-print("")
-print("Iterações necessárias para a convergência:", iter)
+    # Saída
+    print("")
+    print("Iterações necessárias para a convergência:", iter)
 
-tempo = time.time() - inicio
-print("Duração: %s" % tempo)
+    tempo = time.time() - inicio
+    print("Duração: %s" % tempo)
 
-print("")
-print("                     Tensões nas barras                           ")
-print("")
-print("Barra                             V[pu]")
-for i in range(0, len(barras_sc)):
-    print(f"{abs(Vbus[i])/abs(V_SE):.3f}")
+    print("")
+    print("                     Tensões nas barras                           ")
+    print("")
+    print("Barra                             V[pu]")
+    for i in range(0, len(barras_sc)):
+        print(f"{abs(Vbus[i])/abs(V_SE):.3f}")
 
-print("")
-print("                     Potência ativa nos ramos                           ")
-print("")
-print("De  Para                             P[kW]")
-for i in range(0, len(linhas)):
-    # print( int(linhas[i,1]),   int(linhas[i,2]),           f'{Sbr[i].real/1000: .3f}' )
-    print(f"{Sbr[i].real/1000: .3f}")
+    print("")
+    print("                     Potência ativa nos ramos                           ")
+    print("")
+    print("De  Para                             P[kW]")
+    for i in range(0, len(linhas)):
+        # print( int(linhas[i,1]),   int(linhas[i,2]),           f'{Sbr[i].real/1000: .3f}' )
+        print(f"{Sbr[i].real/1000: .3f}")
 
-print("")
-print("                     Potência reativa nos ramos                           ")
-print("")
-print("De  Para                             Q[kvar]")
-for i in range(0, len(linhas)):
-    print(int(linhas[i, 1]), int(linhas[i, 2]), f"{Sbr[i].imag/1000: .3f}")
+    print("")
+    print("                     Potência reativa nos ramos                           ")
+    print("")
+    print("De  Para                             Q[kvar]")
+    for i in range(0, len(linhas)):
+        print(int(linhas[i, 1]), int(linhas[i, 2]), f"{Sbr[i].imag/1000: .3f}")
 
-print("")
-print("                     Perdas nos ramos                           ")
-print("")
-print("De  Para                              [kW]")
-for i in range(0, len(linhas)):
-    print(int(linhas[i, 1]), int(linhas[i, 2]), f"{P_loss[i]/1000: .3f}")
+    print("")
+    print("                     Perdas nos ramos                           ")
+    print("")
+    print("De  Para                              [kW]")
+    for i in range(0, len(linhas)):
+        print(int(linhas[i, 1]), int(linhas[i, 2]), f"{P_loss[i]/1000: .3f}")
 
-sumloss = sum(P_loss / 1000)
-print("perdas totas", f"{sumloss: .3f}")
+    sumloss = sum(P_loss / 1000)
+    print("perdas totas", f"{sumloss: .3f}")
 
+    print("")
+    print("                     indive                           ")
+    print("")
+    print(VSLI_sgd)
 
-print("")
-print("                     indive                           ")
-print("")
-print(VSLI_sgd)
-
-print("")
-print("                     phase                           ")
-print("")
-for i in range(0, len(Vbus)):
-    print(cmath.phase(Vbus[i]))
+    print("")
+    print("                     phase                           ")
+    print("")
+    for i in range(0, len(Vbus)):
+        print(cmath.phase(Vbus[i]))

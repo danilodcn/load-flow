@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 
 
-import numpy as np, math, cmath, time, random
+import cmath
+import math
 import os
+import random
+import time
 
-os.system("cls" if os.name == "nt" else "clear")
-
+import numpy as np
 
 inicio = time.time()
 
@@ -485,55 +487,56 @@ gd = [375, 750, 1875]
 
 # processamento
 
-# os.system("clear")
-print("Aguarde o processamento...")
-[lista, bus1, bus2, bus3, maior, rejeicao_leve, rejeicao_pesada, l, p] = execucao(
-    Vbus_old, TOL, max_iter, B, linhas, gd
-)
-# [l, p] = execucao(Vbus_old, TOL, max_iter, B, linhas, gd)
 
+if __name__ == "__main__":
+    os.system("cls" if os.name == "nt" else "clear")
+    print("Aguarde o processamento...")
+    [lista, bus1, bus2, bus3, maior, rejeicao_leve, rejeicao_pesada, l, p] = execucao(
+        Vbus_old, TOL, max_iter, B, linhas, gd
+    )
+    # [l, p] = execucao(Vbus_old, TOL, max_iter, B, linhas, gd)
 
-Ins = 100 * sum(gd) / math.sqrt((math.pow(sum(B[:, 1]), 2) + math.pow(sum(B[:, 2]), 2)))
+    Ins = 100 * sum(gd) / math.sqrt((math.pow(sum(B[:, 1]), 2) + math.pow(sum(B[:, 2]), 2)))
 
-# saida
+    # saida
 
-print("")
-print(f"Inserção de GFV =  {Ins: .2f} %")
-print("")
-print("Barras selecionadas:")
-print(" %d   com inserção de  375 kW" % bus1)
-print(" %d   com inserção de   75 kW" % bus2)
-print(" %d   com inserção de 1875 kW" % bus3)
-print("")
+    print("")
+    print(f"Inserção de GFV =  {Ins: .2f} %")
+    print("")
+    print("Barras selecionadas:")
+    print(" %d   com inserção de  375 kW" % bus1)
+    print(" %d   com inserção de   75 kW" % bus2)
+    print(" %d   com inserção de 1875 kW" % bus3)
+    print("")
 
-print("")
-print("Total de rejeições para a carga leve:  %d" % l)
-print("Total de rejeições para a carga pesada:  %d" % p)
+    print("")
+    print("Total de rejeições para a carga leve:  %d" % l)
+    print("Total de rejeições para a carga pesada:  %d" % p)
 
-print("")
-print("Rejeição durante a carga leve")
-print("Rejeição por perdas = %d " % rejeicao_leve[0])
-print("Rejeição por sobretensao = %d" % rejeicao_leve[1])
-print("Rejeição por subtensao = %d" % rejeicao_leve[2])
-print("Rejeição por fluxo reverso = %d" % rejeicao_leve[3])
-print("Rejeição por sobre carga = %d" % rejeicao_leve[4])
-print("")
+    print("")
+    print("Rejeição durante a carga leve")
+    print("Rejeição por perdas = %d " % rejeicao_leve[0])
+    print("Rejeição por sobretensao = %d" % rejeicao_leve[1])
+    print("Rejeição por subtensao = %d" % rejeicao_leve[2])
+    print("Rejeição por fluxo reverso = %d" % rejeicao_leve[3])
+    print("Rejeição por sobre carga = %d" % rejeicao_leve[4])
+    print("")
 
-print("")
-print("Rejeição durante a carga pesada")
-print("Rejeição por perdas = %d " % rejeicao_pesada[0])
-print("Rejeição por sobretensao = %d" % rejeicao_pesada[1])
-print("Rejeição por subtensao = %d" % rejeicao_pesada[2])
-print("Rejeição por fluxo reverso = %d" % rejeicao_pesada[3])
-print("Rejeição por sobre carga = %d" % rejeicao_pesada[4])
-print("")
+    print("")
+    print("Rejeição durante a carga pesada")
+    print("Rejeição por perdas = %d " % rejeicao_pesada[0])
+    print("Rejeição por sobretensao = %d" % rejeicao_pesada[1])
+    print("Rejeição por subtensao = %d" % rejeicao_pesada[2])
+    print("Rejeição por fluxo reverso = %d" % rejeicao_pesada[3])
+    print("Rejeição por sobre carga = %d" % rejeicao_pesada[4])
+    print("")
 
-print("")
-# print("Do total de %d possibilidades, %d foram rejeitadas na carga leve e %d foram rejeitadas na crga pesada" %n %l %p)
+    print("")
+    # print("Do total de %d possibilidades, %d foram rejeitadas na carga leve e %d foram rejeitadas na crga pesada" %n %l %p)
 
-tempo = time.time() - inicio
-ts = convert(tempo)
-print("")
-# print(f'Tempo de simulação = {tempo: .2f} s')
-print("Tempo de simulação : ")
-print(convert(tempo))
+    tempo = time.time() - inicio
+    ts = convert(tempo)
+    print("")
+    # print(f'Tempo de simulação = {tempo: .2f} s')
+    print("Tempo de simulação : ")
+    print(convert(tempo))
