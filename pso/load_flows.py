@@ -290,7 +290,7 @@ def execucao(Vbus_old, TOL, max_iter, B, linhas, gd):
     p = 0  # Contador de rejeição para carga pesada
 
     # Escolha da gd
-    n = math.perm(len(B) - 1, len(gd))  # Numero de configuraçãoes possíveis
+    n = math.perm(len(B) - 1, len(gd))  # Numero de configurações possíveis
     lista = np.zeros((1, 9))
     row_to_be_added = np.zeros(9)
 
@@ -300,7 +300,7 @@ def execucao(Vbus_old, TOL, max_iter, B, linhas, gd):
     sum_q_loss = sum(Q_loss / 1000)
     VSLI_sgd = voltage_stability_load_index(Vbus, Sbr, B, linhas)
 
-    # Contador de rejeiçoes
+    # Contador de rejeições
     rejeicao_leve = np.zeros(5)
     rejeicao_pesada = np.zeros(5)
 
@@ -315,7 +315,7 @@ def execucao(Vbus_old, TOL, max_iter, B, linhas, gd):
         sumloss_min = sum(P_loss / 1000)
         sum_q_loss_min = sum(Q_loss / 1000)
 
-        # Teste de restriçoes para a carga leve
+        # Teste de restrições para a carga leve
         viavel_leve = teste_de_restricoes(Vbus_min, Sbr, Sbr_min, sumloss, sumloss_min, b, gd)
         rejeicao_leve = rejeicao_leve + viavel_leve
         if max(viavel_leve) == 0:
@@ -325,7 +325,7 @@ def execucao(Vbus_old, TOL, max_iter, B, linhas, gd):
             )
             sumloss_i = sum(Ploss_i / 1000)
             sum_q_loss_i = sum(Qloss_i / 1000)
-            # Teste de restriçoes para a carga pesada
+            # Teste de restrições para a carga pesada
             viavel_pesada = teste_de_restricoes(Vbus_i, Sbr, Sbr_i, sumloss, sumloss_i, b, gd)
             rejeicao_pesada = rejeicao_pesada + viavel_pesada
             if max(viavel_pesada) != 0:
@@ -483,7 +483,7 @@ b2 = 1
 
 gd = [375, 750, 1875]
 
-# procesamento
+# processamento
 
 # os.system("clear")
 print("Aguarde o processamento...")
