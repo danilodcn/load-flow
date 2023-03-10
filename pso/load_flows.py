@@ -123,7 +123,7 @@ def organiza_camada(barras, linhas):
         barras_new[i, 2] = barras[i, 1]
         barras_new[i, 3] = barras[i, 2]
 
-    barras_new[0, 1] = 0  # DefiniÃ§Ã£o da barra de referÃªncia
+    barras_new[0, 1] = 0  # Definição da barra de referencia
 
     for i in range(0, NB):
         bus_up = int(barras_new[i, 0])
