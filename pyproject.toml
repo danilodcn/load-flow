@@ -9,13 +9,18 @@ readme = "README.md"
 python = "^3.10"
 numpy = "^1.24.2"
 pandas = "^1.5.3"
-pytest = "^7.2.2"
-
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.12.0"
 ipdb = "^0.13.13"
 black = "^23.1.0"
+pytest = "^7.2.2"
+pytest-cov = "^4.0.0"
+taskipy = "^1.10.3"
+
+[tool.pytest.ini_options]
+pythonpath = "."
+addopts = "--doctest-modules"
 
 [tool.isort]
 profile = "black"
@@ -27,3 +32,11 @@ line_length = 100
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.taskipy.tasks]
+format = "isort . && black ."
+lint = "black --check --diff . && isort --check --diff ."
+pre_test = "task lint"
+test = "pytest -s -x --cov=pso -vv"
+post_test = "coverage html"
