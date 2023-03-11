@@ -31,7 +31,8 @@ jobs:
     - name: create empty env
       run: |
         cd /tmp
-        poetry init -y
+        poetry init exemplo
+        cd exemplo
         poetry shell
 
     - name: Set up Python ${{ matrix.python-version }} with cache
