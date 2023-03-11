@@ -21,7 +21,7 @@ jobs:
   build:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+
     strategy:
       fail-fast: false
       max-parallel: 3
@@ -57,8 +57,10 @@ jobs:
       run: |
         poetry run task test
 
-    - name: Archive code coverage results
-      uses: actions/upload-artifact@v3
+    - uses: codecov/codecov-action@v3
       with:
-        name: coverage
-        path: './htmlcov'
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./coverage1.xml,./coverage2.xml
+        name: codecov-load-flow
+        fail_ci_if_error: true
+        verbose: true
