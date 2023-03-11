@@ -31,7 +31,7 @@ jobs:
     - name: create empty env
       run: |
         cd /tmp
-        poetry init exemplo
+        poetry new exemplo
         cd exemplo
         poetry shell
 
