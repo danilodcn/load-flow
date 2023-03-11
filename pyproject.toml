@@ -6,7 +6,7 @@ authors = ["Danilo Nascimento <daconnas.dcn@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.7"
 numpy = "^1.24.2"
 pandas = "^1.5.3"
 
@@ -33,6 +33,12 @@ line_length = 100
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+
+[tool.taskipy.settings]
+use_vars = true
+
+[tool.taskipy.variables]
+run_command = "poetry run"
 
 [tool.taskipy.tasks]
 format = "isort . && black ."
