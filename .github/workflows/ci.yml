@@ -31,9 +31,9 @@ jobs:
     - name: create empty env
       run: |
         cd /tmp
-        poetry new exemplo
-        cd exemplo
-        poetry shell
+        poetry new example
+        cd example
+        poetry add requests
 
     - name: Set up Python ${{ matrix.python-version }} with cache
       uses: actions/setup-python@v4
