@@ -26,7 +26,8 @@ jobs:
 
     - name: create empty env
       run: |
-        cd /tmp
+        ls
+        pwd
         poetry new example
         cd example
         poetry add requests
