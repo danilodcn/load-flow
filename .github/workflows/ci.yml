@@ -20,10 +20,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Set up Python ${{ matrix.python-version }} without cache
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
 
     - name: Install poetry
       run: pipx install poetry
@@ -41,5 +37,8 @@ jobs:
         python-version: ${{ matrix.python-version }}
         cache: 'poetry'
 
-    - name: View poetry --help
-      run: poetry --help
+    - name: install packages
+      run: poetry install
+    
+    - name: Tests
+      run: poetry run task test
