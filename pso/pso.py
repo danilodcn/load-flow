@@ -7,7 +7,9 @@ N_INDIVIDUOS = 200
 
 
 def random_population(population: pd.DataFrame) -> pd.DataFrame:
-    """""""
+    """
+    funcao
+    """
     size = (3, 200)
 
     posicoes = np.random.uniform(0, high=NUMERO_BARRAS, size=size)
