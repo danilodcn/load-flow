@@ -20,7 +20,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-
     - name: Install poetry
       run: pipx install poetry
 
@@ -42,4 +41,8 @@ jobs:
       run: poetry install
     
     - name: Tests
-      run: poetry run task test
+      run: |
+        poetry run task test
+
+    - name: Upload Coverage to Codecov
+      uses: codecov/codecov-action@v2
