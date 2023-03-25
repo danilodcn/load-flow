@@ -41,7 +41,7 @@ TEST_COVERAGE:
 TEST_DOCS:
   stage: test
   script:
-  - task docs_build --site-dir test
+  - poetry run task docs_build --site-dir test
   artifacts:
     paths:
     - test
@@ -52,7 +52,7 @@ TEST_DOCS:
 PAGES:
   stage: deploy
   script:
-  - task docs_build 
+  - poetry run task docs_build 
   artifacts:
     paths:
     - public
