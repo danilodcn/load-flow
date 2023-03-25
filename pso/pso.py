@@ -33,6 +33,8 @@ def new_population() -> pd.DataFrame:
 def random_positions(population: pd.DataFrame) -> pd.DataFrame:
     """
     Gera posições e velocidades aleatórias para uma data população
+    A população deve ser passada como argumento!
+
     Examples:
         >>> p = new_population()
         >>> r = random_positions(p)
