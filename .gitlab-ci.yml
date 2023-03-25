@@ -26,7 +26,7 @@ LINT:
   script:
     - poetry run task lint
 
-TEST:
+TEST_COVERAGE:
   stage: test
   script:
     - poetry run task test
@@ -38,7 +38,7 @@ TEST:
     expire_in: 30 days
     # public: true
 
-test:
+TEST_DOCS:
   stage: test
   script:
   - mkdocs build --verbose --site-dir test
