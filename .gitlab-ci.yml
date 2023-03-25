@@ -13,8 +13,8 @@ cache:
 before_script:
   - python --version  # For debugging
   - pip install poetry
+  - poetry config virtualenvs.in-project true
   - poetry install
-  - poetry shell
 
 test:
   stage: test
