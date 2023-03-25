@@ -1,17 +1,59 @@
-# The Docker image that will be used to build your app
-image: python:3.10
-# Functions that should be executed before the build script is run
+image: "python:3.10"
+
+stages:
+  - lint
+  - test
+  - deploy
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+# https://pip.pypa.io/en/stable/topics/caching/
+
+cache:
+  paths:
+    - .cache/pip
+    - .venv/
+
 before_script:
+  - python --version  # For debugging
   - pip install poetry
+  - poetry config virtualenvs.in-project true
   - poetry install
-pages:
+
+LINT:
+  stage: lint
   script:
-    - poetry run task docs_build
+    - poetry run task lint
+
+TEST_COVERAGE:
+  stage: test
+  script:
+    - poetry run task test
+  artifacts:
+    name: coverage-$CI_PIPELINE_ID
+    expose_as: code-coverage
+    paths:
+      - htmlcov
+    expire_in: 30 days
+
+TEST_DOCS:
+  stage: test
+  script:
+  - poetry run task docs_build --site-dir test
   artifacts:
     paths:
-      # The folder that contains the files to be exposed at the Page URL
-      - public
+    - test
   rules:
-    # This ensures that only pushes to the default branch will trigger
-    # a pages deploy
+    - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
+
+
+pages:
+  stage: lint
+  script:
+  - poetry run task docs_build 
+  artifacts:
+    paths:
+    - public
+  rules:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
