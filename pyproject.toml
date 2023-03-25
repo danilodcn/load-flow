@@ -43,6 +43,6 @@ run_command = "poetry run"
 [tool.taskipy.tasks]
 format = "isort . && black ."
 lint = "black --check --diff . && isort --check --diff ."
-pre_test = "task lint"
+pre_test = "echo testing ..."
 test = "pytest -s -x --cov=pso -vv"
 post_test = "coverage html"
