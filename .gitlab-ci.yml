@@ -1,0 +1,29 @@
+image: "python:3.10"
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+# https://pip.pypa.io/en/stable/topics/caching/
+
+cache:
+  paths:
+    - .cache/pip
+    - .venv/
+
+before_script:
+  - python --version  # For debugging
+  - pip install poetry
+  - poetry install
+  - poetry shell
+
+test:
+  stage: test
+  script:
+    - task test
+  artifacts:
+    name: TRANSFORMER-$CI_PIPELINE_ID
+    paths:
+      - htmlcov
+    expire_in: 30 days
+    # public: true
+  
