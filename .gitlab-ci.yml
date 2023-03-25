@@ -30,7 +30,7 @@ TEST:
   script:
     - poetry run task test
   artifacts:
-    name: TRANSFORMER-$CI_PIPELINE_ID
+    name: coverage-$CI_PIPELINE_ID
     paths:
       - htmlcov
     expire_in: 30 days
