@@ -19,7 +19,7 @@ before_script:
 test:
   stage: test
   script:
-    - task test
+    - poetry run task test
   artifacts:
     name: TRANSFORMER-$CI_PIPELINE_ID
     paths:
