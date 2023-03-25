@@ -31,6 +31,7 @@ TEST:
     - poetry run task test
   artifacts:
     name: coverage-$CI_PIPELINE_ID
+    expose_as: coverage-$CI_PIPELINE_ID
     paths:
       - htmlcov
     expire_in: 30 days
