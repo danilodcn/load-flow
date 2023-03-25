@@ -1,5 +1,9 @@
 image: "python:3.10"
 
+stages:
+  - "lint"
+  - "test"
+
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
@@ -16,7 +20,12 @@ before_script:
   - poetry config virtualenvs.in-project true
   - poetry install
 
-test:
+LINT:
+  stage: lint
+  script:
+    - poetry run task lint
+
+TEST:
   stage: test
   script:
     - poetry run task test
