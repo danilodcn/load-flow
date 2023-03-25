@@ -54,6 +54,3 @@ def random_positions(population: pd.DataFrame) -> pd.DataFrame:
     speeds = np.random.uniform(size=size)
 
     return positions, speeds
-
-
-
