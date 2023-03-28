@@ -4,35 +4,41 @@ import numpy as np
 import pandas as pd
 
 
-def new_population() -> pd.DataFrame:
+def new_population(vars: int) -> pd.DataFrame:
     """
     Cria uma nova população vazia. População será abstraída por um DataFrame do pandas em que
     as linhas representam o indivíduos.
     As colunas serão:
-     - speed: velocidade da partícula
-     - position: posição da partícula no espaço
-     - best_position: melhor posição da partícula
+     - speed_{n}: velocidade da partícula n
+     - position_{n}: posição da partícula n no espaço
+     - best_position_n: melhor posição da partícula n
      - objective: valor da função objetivo
 
     Examples:
-        >>> p = new_population()
+        >>> p = new_population(20)
         >>> isinstance(p, pd.DataFrame)
         True
         >>> p.empty
         True
+        >>> len(p.columns) == 20 * 3 + 1
+        True
     """
-    population = pd.DataFrame(
-        columns=["speed", "position", "best_position", "objective"],
-        data=[],
-    )
+    columns = []
+    for col_name in "speed", "position", "best_position":
+        for i in range(vars):
+            columns.append(f"{col_name}_{i}")
+
+    columns.append("objective")
+
+    population = pd.DataFrame(columns=columns, data=[])
     return population
 
 
 def random_numbers(
     number: int,
     vars: int,
-    max: int | None = None,
     min: int | None = None,
+    max: int | None = None,
     type: Literal["int"] | Literal["float"] | None = None,
 ) -> np.ndarray:
     """
