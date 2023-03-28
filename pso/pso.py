@@ -39,11 +39,8 @@ def random_numbers(
     Gera números aleatórios dependendo da entrada.
 
     Examples:
-        >>> number = 200
-        >>> vars = 3
-        >>> min, max = 2, 20
-        >>> numbers = random_numbers(number, vars, max, min)
-        >>> len(numbers) == number
+        >>> numbers = random_numbers(200, 3, 2, 20)
+        >>> len(numbers) == 200
         True
 
     """
