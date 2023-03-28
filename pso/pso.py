@@ -1,9 +1,7 @@
+from typing import Literal
+
 import numpy as np
 import pandas as pd
-
-NUMERO_BARRAS = 33
-DIMENSAO = 3
-N_INDIVIDUOS = 200
 
 
 def new_population() -> pd.DataFrame:
@@ -30,29 +28,35 @@ def new_population() -> pd.DataFrame:
     return population
 
 
-def random_positions(population: pd.DataFrame) -> pd.DataFrame:
+def random_numbers(
+    number: int,
+    vars: int,
+    max: int | None = None,
+    min: int | None = None,
+    type: Literal["int"] | Literal["float"] | None = None,
+) -> np.ndarray:
     """
-    Gera posições e velocidades aleatórias para uma data população
-    A população deve ser passada como argumento!
+    Gera números aleatórios dependendo da entrada.
 
     Examples:
-        >>> p = new_population()
-        >>> r = random_positions(p)
-        >>> len(r)
-        2
-        >>> positions, speeds = r
-        >>> len(positions) == N_INDIVIDUOS
+        >>> number = 200
+        >>> vars = 3
+        >>> min, max = 2, 20
+        >>> numbers = random_numbers(number, vars, max, min)
+        >>> len(numbers) == number
         True
-        >>> positions.size == N_INDIVIDUOS * DIMENSAO
-        True
-        >>> len(speeds) == N_INDIVIDUOS
-        True
-        >>> speeds.size == N_INDIVIDUOS * DIMENSAO
-        True
+
     """
-    size = (200, 3)
+    max = max or 1
+    min = min or 0
+    assert min < max, "'min' deve ser menor do que 'max'"
 
-    positions = np.random.uniform(0, high=NUMERO_BARRAS, size=size)
-    speeds = np.random.uniform(size=size)
+    assert isinstance(vars, int), "'vars' deve ser inteiro"
 
-    return positions, speeds
+    size = (number, vars)
+    numbers = np.random.uniform(min, max, size=size)
+
+    match type:
+        case "int":
+            numbers = np.int64(numbers)
+    return numbers
