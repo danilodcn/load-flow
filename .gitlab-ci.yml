@@ -49,7 +49,7 @@ TEST_DOCS:
 
 
 pages:
-  stage: lint
+  stage: deploy
   script:
   - poetry run task docs_build 
   artifacts:
