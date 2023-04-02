@@ -14,5 +14,6 @@ build:
       - poetry config virtualenvs.create false
 
     post_install:
+      - poetry config virtualenvs.create false
       - poetry install --only doc
       - pip install -U mkdocs
