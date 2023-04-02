@@ -6,7 +6,7 @@ authors = ["Danilo Nascimento <daconnas.dcn@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10.6"
 numpy = "^1.24.2"
 pandas = "^1.5.3"
 
