@@ -6,9 +6,6 @@ copyright: Copyright &copy; 2023 Danilo Nascimento
 site_url: "https://danilodcn.gitlab.io"
 site_dir: public
 
-
-
-
 watch:
   - pso_load_flow
 
@@ -59,59 +56,17 @@ theme:
         name: Mudar para modo claro
 
 markdown_extensions:
-  - meta
-  - abbr
-  - admonition
   - attr_list
-  - def_list
-  - footnotes
-  - md_in_html
-  - toc:
-      permalink: true
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.betterem:
-      smart_enable: all
-  - pymdownx.caret
-  - pymdownx.details
-  - pymdownx.emoji:
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-      emoji_index: !!python/name:materialx.emoji.twemoji
-  - pymdownx.highlight:
-      anchor_linenums: true
-      linenums_style: pymdownx-inline
-  - pymdownx.inlinehilite
-  - pymdownx.keys
-  - pymdownx.magiclink:
-      repo_url_shorthand: true
-      user: squidfunk
-      repo: mkdocs-material
-  - pymdownx.mark
-  - pymdownx.smartsymbols
+  - admonition
+  - pymdownx.tasklist
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
-
-  - markdown.extensions.admonition
-  - markdown.extensions.attr_list
-  - markdown.extensions.codehilite:
-      guess_lang: false
-  - markdown.extensions.def_list
-  - markdown.extensions.footnotes
-  - markdown.extensions.meta
-  - markdown.extensions.toc:
-      permalink: true
-  - pymdownx.arithmatex
-  - pymdownx.critic
-  - pymdownx.snippets:
-      check_paths: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 plugins:
   - macros
@@ -123,9 +78,6 @@ plugins:
           paths: [pso_load_flow]
           options:
             show_root_heading: true
-
-  - minify:
-      minify_html: true
 
 extra:
   commands:
