@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "pso"
+name = "pso-load-flow"
 version = "0.1.0"
 description = ""
 authors = ["Danilo Nascimento <daconnas.dcn@gmail.com>"]
@@ -57,7 +57,7 @@ run_command = "poetry run"
 format = "isort . && black ."
 lint = "black --check --diff . && isort --check --diff ."
 pre_test = "echo testing ..."
-test = "pytest -s -x --cov=pso -vv"
+test = "pytest -s -x --cov=pso_load_flow -vv"
 post_test = "coverage html"
 docs_build = "mkdocs build --verbose"
 docs = "mkdocs serve"

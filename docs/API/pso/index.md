@@ -1,3 +1,3 @@
 # PSO
 
-::: pso.pso
+::: pso_load_flow.pso

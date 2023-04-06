@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 from faker import Faker
 
-from pso.pso import random_numbers
+from pso_load_flow.pso import random_numbers
 
 fake = Faker()
 

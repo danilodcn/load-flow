@@ -10,7 +10,7 @@ site_dir: public
 
 
 watch:
-  - pso
+  - pso_load_flow
 
 logo: simple/dataiku
 favicon: simple/dataiku
@@ -120,7 +120,7 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
-          paths: [pso]
+          paths: [pso_load_flow]
           options:
             show_root_heading: true
 
