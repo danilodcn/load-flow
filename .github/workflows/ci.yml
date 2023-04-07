@@ -12,24 +12,9 @@ permissions:
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
   build:
-    environment:
-      name: github-pages
-
-    strategy:
-      fail-fast: false
-      max-parallel: 3
-      matrix:
-        python-version: ["3.8", "3.9", "3.10"]
-        os: [ubuntu-latest, windows-latest]
-  
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
 
@@ -44,10 +29,10 @@ jobs:
         cd example
         poetry add requests
 
-    - name: Set up Python ${{ matrix.python-version }} with cache
+    - name: Set up Python 3.11 with cache
       uses: actions/setup-python@v4
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: "3.11"
         cache: 'poetry'
 
     - name: install packages
