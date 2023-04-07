@@ -1,0 +1,2 @@
+[![Documentation Status](https://readthedocs.org/projects/load-flow/badge/?version=latest)](https://load-flow.readthedocs.io/pt/latest/?badge=latest)
+[![ci workflow](https://github.com/danilodcn/load-flow/actions/workflows/ci.yml/badge.svg)](https://github.com/danilodcn/load-flow/actions/workflows/ci.yml)
